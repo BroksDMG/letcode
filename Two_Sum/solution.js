@@ -18,14 +18,32 @@ Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
  * @param {number} target
  * @return {number[]}
  */
-const num=[2,7,11,15];
+const num=[3,2,4];
  var twoSum = function(nums, target) {
-    const solarr=[];
-    for(let i=0;i<nums.lenght;i++){
-        if(nums[i]<target){
-        const rest=nums[i]%target;
-        solarr.push(nums.indexOf(nums[i]));
+   let index1=0;
+   let index2=0;
+   let number=[];
+    for(let i=0;i<nums.length;i++){
         
+       for(let j=1;j<nums.length;j++){ 
+    
+        if(nums[i]+nums[j]===target)
+        {
+            
+            index1=nums[i];
+            index2=nums[j];
+            
         }}
+    }  
+    if(nums.indexOf(index1)===0&&nums.indexOf(index2)===0){
+        number.push(nums.indexOf(index1),nums.indexOf(index2)+1)
+    }else 
+     number.push(nums.indexOf(index1),nums.indexOf(index2));
+    
+    return number
 };
-twoSum(num,9)
+    // return `first inxex is equal: ${nums.indexOf(index1)} and second: ${nums.indexOf(index2)}`;
+    // return nums.indexOf(index1),nums.indexOf(index2);
+    // console.log(`first inxex is equal: ${nums.indexOf(index1)} and second: ${nums.indexOf(index2)}`);
+    
+console.log( twoSum(num,6));
