@@ -6,8 +6,6 @@
  var shuffle = function(nums, n) {
     const firstHalf =nums.slice(0,nums.length/2);
     const secondHalf=nums.slice(nums.length/2);
-    console.log(firstHalf);
-    console.log(secondHalf);
     const solution=[]
     for(let i=0;i<firstHalf.length;i++){
         solution.push(firstHalf[i]);
