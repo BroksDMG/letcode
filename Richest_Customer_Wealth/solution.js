@@ -4,29 +4,19 @@
  */
  var maximumWealth = function(accounts) {
     let count=0;
-    let res=0;
+    let arr=[];
     for(let i=0;i<accounts.length;i++){
-        console.log("Acc[iiiii] :"+accounts[i])
-        // console.log(accounts.length);
-        
-        
+        for(let j=0;j<accounts[i].length;j++){
+        count+=accounts[i][j];
+        }
+        arr.push(count);
+        count=0;
     }
-    // for(let i=0;i<accounts.length;i++){
-    //     console.log("Acc[iiiii] :"+accounts[i])
-    //     // console.log(accounts.length);
-    //     console.log(count+=accounts[i])
-    //     for(let j=0;j<accounts[i].length;j++){
-    //     //   console.log(accounts[j].length);
-    //       console.log("Acc[j] :"+accounts[j]);
-    //     }
-        
-    // }
+    return Math.max(...arr) ;
 };
-maximumWealth(  [1,2,3])
-// maximumWealth(
-//     [   [1,2,3],
-//         [3,2,1],
-//         [4,3,1],
-//         [6,1,1],
-//         [9,2,2],
-//         [5,7,2]])
+
+console.log(maximumWealth([[2,8,7],[7,1,3],[1,9,5]]))
+
+//first 6
+//second 10
+//third 0
