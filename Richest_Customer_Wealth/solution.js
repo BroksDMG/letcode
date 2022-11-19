@@ -19,4 +19,4 @@ console.log(maximumWealth([[2,8,7],[7,1,3],[1,9,5]]))
 
 //first 6
 //second 10
-//third 0
+//third 17
