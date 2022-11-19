@@ -11,6 +11,6 @@
 };
 console.log(mostWordsFound(["alice and bob love leetcode", "i think so too", "this is great thanks very much"]))
 
-//first 8
+//first 6
 //second 3
-//third 
+//third null
