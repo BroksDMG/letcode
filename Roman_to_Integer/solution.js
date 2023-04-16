@@ -3,31 +3,30 @@
  * @return {number}
  */
  var romanToInt = function(s) {
-    const num =[1,5,10,50,100,500,1000];
-    const rom =['I','V','X','L','C','D','M'];
-    
-    //tablica numerów i tablica rom
-    /*przejście po tablicy num ,jezeli s i num[i] 
-    sa rowne to wyswietl rom[] na tej samej pozycji
-    */
-    /*jezeli s nie równa sie num[i]{
-        
-    
-        */
-       for(let i=0;i<num.length;i++){
-           if(num[i]===s){
-               console.log(rom[i]);
-               rom[rom.indexOf(s)];
-               console.log(rom.indexOf(s));
-            }
-            else if(num[i]!==s){
-                let rest= num[i]%s
-                if(num[i]===rest){
-                    console.log(rom[i])
-                }
+    const data={
+        I:1,
+        V:5,
+        X:10,
+        L:50,
+        C:100,
+        D:500,
+        M:1000
+    }
+    const arrRomans=s.split("");
+    const res=[];
+    let result=0;
+    arrRomans.find((el)=>{res.push(data[el]) })
+    for (let i = 0; i <res.length;i++) {
+        const firs=res[i];
+        const sec=res[i+1];
+        if(firs<sec){
+            result+=sec-firs
+            i++
+        }else{
+            result+=firs
         }
-        else console.log("jet większe");
         
     }
+    return result
 };
-romanToInt(10);
+romanToInt("LVII");
