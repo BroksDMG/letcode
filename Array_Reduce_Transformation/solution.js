@@ -5,9 +5,9 @@
  * @return {number}
  */
 var reduce = function(nums, fn, init) {
-    let result  =init
-    nums.forEach((el,i)=>{
-        result=fn(result,nums[i])
+    let result=init
+    nums.forEach((el)=>{
+        result=fn(result,el)
     })
     return result
 };
