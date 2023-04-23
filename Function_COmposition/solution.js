@@ -7,7 +7,6 @@ var compose = function(functions) {
         let result=x;
         functions.reverse().forEach(el=>{
            result=el(result);
-
         })
         return result
     }
