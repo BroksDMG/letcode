@@ -3,7 +3,6 @@
 // console.log('this is a debug message');
 
 function solution(A) {
-    //długość tablicy
     const len=A.length
    let sum=0;
    let counter=0;

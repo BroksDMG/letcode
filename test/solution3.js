@@ -14,7 +14,7 @@ type Props = {
   menuConfig: MenuConfig
 }
  
-const SideMenu: React.FC<Props> = ({ menuConfig }) => {
+const Menu: React.FC<Props> = ({ menuConfig }) => {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
  
   const handleItemClick = (title: string) => {
@@ -65,7 +65,7 @@ const SideMenu: React.FC<Props> = ({ menuConfig }) => {
   );
 };
  
-export default SideMenu;
+export default Menu;
  
 
 
