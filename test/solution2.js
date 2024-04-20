@@ -8,7 +8,7 @@ const handleJSON = (jsonString, saveToFile) => {
     // zabezpieczenie żeby funkcja nie była zbyt czesto wywoływana
     // sprawdza roznice pomiedzy now i lastcallTimestamp i przerywa funkcje kiedy roznica jest wieksza niz 1s
     // a  jezeli roznica nie jest wieksza lastcalltimestam jest aktualizowane do aktualnego czasu
-    const now = Date.now();
+    const now = Date.now(); 
     if (now - lastCallTimestamp < 1000) {
     return; 
   }
