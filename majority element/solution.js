@@ -5,65 +5,32 @@
 var majorityElement = function (nums) {
   const majority = Math.floor(nums.length / 2);
   //chceck the same numbers
-  let repeat = 0;
-  let mostRepeat = 0;
-  let repeatNumber = 0;
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 0; j < nums.length; j++) {
-      if (nums[i] === nums[j]) {
-        repeat++;
-        //jeżeli najwięcej powtórzeń jest większza lub równe aktualnym Powtórzeniom to zostaje /inaczej aktualne powtórzenia to najwięcej
-        mostRepeat = mostRepeat >= repeat ? mostRepeat : repeat;
-        //jeżeli najwiecej powtózen jest mniejsze lub rowne altyalnym to jest największa liczba
-        if (mostRepeat <= repeat) {
-          repeatNumber = nums[i];
-        }
-      }
+  //1 musze mieć pętlę na pewno do iteracji
+  //2 liczenie powtarzających sie liczb, np Re
+  //3 liczba która sie powtarza
+  //4 sposób żeby porównać liczby
+  //1 posortować tablice i jak jeden jest równy następnemu to
+  let Repeted = 1;
+  let MostRepeted = 0;
+  let Target = 0;
+  const sorterdNums = nums.sort();
+  for (let i = 0; i < sorterdNums.length; i++) {
+    //jeżeli element jest równy następnemu to repeted ++ jeżeli nie to 0;
+    if (sorterdNums[i] === sorterdNums[i + 1]) {
+      Repeted++;
+    } else {
+      Repeted = 1;
     }
-    repeat = 0;
+    if (Repeted >= MostRepeted) {
+      Target = sorterdNums[i];
+      MostRepeted = Repeted;
+    }
   }
-  if (majority <= mostRepeat) return repeatNumber;
+  if (MostRepeted >= majority) return Target;
   else return 0;
 };
-
-console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
+// majorityElement([2, 2, 1, 1, 1, 2, 2]);
+// console.log();
 console.log(majorityElement([3, 2, 3]));
-
-// /**
-//  * @param {number[]} nums
-//  * @return {number}
-//  */
-// var majorityElement = function (nums) {
-//   //majority target = nums lenght/ 2 without rest
-//   const majority = Math.floor(nums.length / 2);
-//   console.log("majority", majority);
-//   //chceck the same numbers
-//   let repeat = 0;
-//   let mostRepeat = 0;
-//   let repeatNumber = 0;
-//   for (let i = 0; i < nums.length; i++) {
-//     for (let j = 0; j < nums.length; j++) {
-//       if (nums[i] === nums[j]) {
-//         repeat++;
-//         //jeżeli najwięcej powtórzeń jest większza lub równe aktualnym Powtórzeniom to zostaje /inaczej aktualne powtórzenia to najwięcej
-//         mostRepeat = mostRepeat >= repeat ? mostRepeat : repeat;
-//         //jeżeli najwiecej powtózen jest mniejsze lub rowne altyalnym to jest największa liczba
-//         if (mostRepeat <= repeat) {
-//           repeatNumber = nums[i];
-//         }
-//         console.log("target", repeatNumber);
-//         console.log("te same" + nums[i] + nums[j]);
-//       } else {
-//         console.log("inne ", nums[i], nums[j]);
-//       }
-//       console.log(repeat);
-//       console.log(mostRepeat);
-//     }
-//     repeat = 0;
-//   }
-//   if (majority <= mostRepeat) return repeatNumber;
-//   else return 0;
-// };
-
-// console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
-// console.log(majorityElement([3, 2, 3]));
+console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
+// console.log(majorityElement([2, 2, 1, 2, 3, 3, 1, 2, 2, 2]));
