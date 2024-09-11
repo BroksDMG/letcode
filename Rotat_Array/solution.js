@@ -6,23 +6,20 @@
 var rotate = function (nums, k) {
   if (nums.length <= 1) return nums;
 
-  //przesuwanie tablicy o k elementy w prawo =>array[i+k]
-  //pierwsze użycie algorytmu bubble sort
-  //jak nie ma miejsca w prawo to jakoś od nowa tablicy i+k>array.lenght? k-i, i=0;
-  //   let temp;
-  //   for (let i = 0; i < nums.length; i++) {
-  //     for (let j = 0; j < k; j++) {
-  //       temp = nums[j];
-  //       nums[j] = nums[j + 1];
-  //       nums[j + 1] = temp;
-  //       console.log(nums);
-  //     }
-  //   }
-  console.log(10 / );
+  let steps = k;
+  let len = nums.length;
+  if (k > len) {
+    steps = steps - Math.floor(k / len) * len;
+  }
   for (let i = 0; i < k; i++) {
-    let t = nums.splice(0, nums.length - 1);
+    let t = nums.splice(0, len - 1);
     nums.push(...t);
   }
-  console.log(nums);
 };
-console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3));
+console.log(rotate([1, 2, 3, 4, 5], 13));
+let xk = 4;
+let ylen = 5;
+let rot = Math.floor(xk / ylen);
+// console.log(rot);
+
+console.log(rotate());
