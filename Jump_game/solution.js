@@ -3,19 +3,15 @@
  * @return {boolean}
  */
 var canJump = function (nums) {
-  if (nums.length <= 1) return true;
-  const arrLastIndex = nums.length - 1;
-  let res = false;
-  for (let i = 0; i < nums.length - 1; i++) {
-    for (let j = 0; j < nums[i]; j++) {
-      if (nums[i] + i >= arrLastIndex || j + nums[j] >= arrLastIndex) {
-        res = true;
-      } else {
-        res = false;
-      }
-    }
+  let farthest = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i > farthest) return false; // Jeśli nie można dotrzeć do tego indeksu, zwróć false
+    farthest = Math.max(farthest, i + nums[i]); // Oblicz najdalszy zasięg
+    if (farthest >= nums.length - 1) return true; // Jeśli można dotrzeć do końca, zwróć true
   }
-  return res;
+
+  return false;
 };
 
 console.log(canJump([2, 3, 1, 1, 4]));
