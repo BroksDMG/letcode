@@ -3,20 +3,18 @@
  * @return {number[]}
  */
 var productExceptSelf = function (nums) {
-  let answerarr = new Array(nums.length).fill(1);
+  let result = new Array(nums.length).fill(1);
   let left = 1;
-  for (let i = 1; i < nums.length; i++) {
-    answerarr[i] = left;
+  for (let i = 0; i < nums.length; i++) {
+    result[i] = left;
     left *= nums[i];
-    // console.log(answerarr);
   }
   let right = 1;
   for (let i = nums.length - 1; i >= 0; i--) {
-    answerarr[i] *= right;
+    result[i] *= right;
     right *= nums[i];
-    console.log(answerarr);
   }
-  return answerarr;
+  return result;
 };
 //pomnożyć ze sobą każdą liczbe oprócz a[i] i dodać do tablicy
 console.log(productExceptSelf([1, 2, 3, 4]));
