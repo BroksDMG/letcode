@@ -4,11 +4,11 @@
  * @return {number[]}
  */
 var intersection = function (nums1, nums2) {
+  let res = [];
+  let i = 0;
+  let j = 0;
   let sortedA = nums1.sort((a, b) => a - b);
   let sortedB = nums2.sort((a, b) => a - b);
-  let i = 0,
-    j = 0;
-  let res = [];
   while (i < sortedA.length && j < sortedB.length) {
     if (sortedA[i] === sortedB[j]) {
       if (!res.includes(sortedA[i])) {
@@ -16,13 +16,13 @@ var intersection = function (nums1, nums2) {
       }
       i++;
       j++;
-    } else if (sortedA[i] < nums2[j]) {
+    } else if (sortedA[i] < sortedB[j]) {
       i++;
     } else {
       j++;
     }
   }
-  console.log(res);
+  return res;
 };
 console.log(intersection([1, 2, 2, 1], [2, 2]));
 console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4]));
