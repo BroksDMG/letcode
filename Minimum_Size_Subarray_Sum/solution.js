@@ -7,21 +7,19 @@ var minSubArrayLen = function (target, nums) {
   let curSum = 0;
   let minlength = Infinity;
   let left = 0;
-  for (let i = 0; i < nums.length; i++) {
-    curSum += nums[i];
-    console.log(curSum);
-    if (curSum >= target) {
-      // console.log("left", left, "cursum", curSum);
-      console.log("i-left", i - left, "i", i, "left", left);
-      if (i - left < minlength) {
-        minlength = i - left;
-        // curSum -= nums[i];
-        i--;
-      }
+  let right = 0;
+  while (right < nums.length) {
+    // Dodajemy wartość do bieżącej sumy
+    curSum += nums[right];
+    // Jeśli suma osiągnęła target, sprawdzamy długość okna i przesuwamy lewą granicę
+    while (curSum >= target) {
+      minlength = Math.min(minlength, right - left + 1);
       curSum -= nums[left];
       left++;
     }
-    console.log(minlength);
+
+    // Przesuwamy prawą granicę
+    right++;
   }
 };
 console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3]));
@@ -46,3 +44,20 @@ console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3]));
 
 // Input: target = 11, nums = [1,1,1,1,1,1,1,1]
 // Output: 0
+
+// for (let i = 0; i < nums.length; i++) {
+//   curSum += nums[i];
+//   console.log(curSum);
+//   if (curSum >= target) {
+//     // console.log("left", left, "cursum", curSum);
+//     console.log("i-left", i - left, "i", i, "left", left);
+//     if (i - left < minlength) {
+//       minlength = i - left;
+//       // curSum -= nums[i];
+//       i--;
+//     }
+//     curSum -= nums[left];
+//     left++;
+//   }
+//   console.log(minlength);
+// }
