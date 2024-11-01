@@ -3,23 +3,28 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-  let sumlenght = 0;
-  let start = 0;
-  let windowstr = {};
-  for (let end = 0; end < s.length; end++) {
-    const currchat = s[end];
-    if (windowstr[currchat] >= start) {
-      start = windowstr[currchat] + 1;
+  if (s.length < 1) return 0;
+  let subwindow = "";
+  let right = 0;
+  let left = 0;
+  let maxLength = 0;
+  while (right < s.length) {
+    if (!subwindow.includes(s[right])) {
+      subwindow += s[right];
+      maxLength = Math.max(maxLength, right - left + 1);
+    } else {
+      subwindow = s.slice(left + 1, right);
+      left++;
+      right--;
     }
-    windowstr[currchat] = end;
-
-    sumlenght = Math.max(sumlenght, end - start + 1);
+    right++;
   }
-  return sumlenght;
+  return maxLength;
 };
 console.log(lengthOfLongestSubstring("abcabcbb"));
 console.log(lengthOfLongestSubstring("bbbbb"));
 console.log(lengthOfLongestSubstring("pwwkew"));
+console.log(lengthOfLongestSubstring("dvdf"));
 //target : longest substring without repeating;
 // output: length wigthout repeating;
 
