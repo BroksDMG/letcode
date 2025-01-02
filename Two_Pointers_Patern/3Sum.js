@@ -3,35 +3,34 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-  let j = nums.length - 1;
-  let k = 1;
-  let i = 0;
-  let sortedNums = nums.sort((a, b) => a - b);
-  let resArr = [];
-  let tempArr = [];
-  while (i < j) {
-    if (
-      !tempArr.includes(sortedNums[i]) &&
-      !tempArr.includes(sortedNums[j]) &&
-      !tempArr.includes(tempArr[k])
-    ) {
-      console.log(tempArr);
-      tempArr.push(sortedNums[i], sortedNums[j], sortedNums[k]);
-      if (sortedNums[i] + sortedNums[k] + sortedNums[j] > 0) {
-        j--;
-      } else {
-        k++;
-        i++;
+  nums.sort((a, b) => a - b);
+  let res = [];
+
+  for (let i = 0; i < nums.length - 2; i++) {
+      if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+      let left = i + 1;
+      let right = nums.length - 1;
+
+      while (left < right) {
+          let sum = nums[i] + nums[left] + nums[right];
+
+          if (sum === 0) {
+              res.push([nums[i], nums[left], nums[right]]);
+              left++;
+              right--;
+
+              while (left < right && nums[left] === nums[left - 1]) left++;
+              while (left < right && nums[right] === nums[right + 1]) right--;
+          } else if (sum < 0) {
+              left++;
+          } else {
+              right--;
+          }
       }
-      if (sortedNums[i] + sortedNums[k] + sortedNums[j] === 0) {
-        resArr.push(tempArr);
-      }
-    }
-    sortedNums[i];
   }
 
-  //if no posibility return [0]
-  //if posibility return [[posibility]]
+  return res;
 };
 console.log(threeSum([-1, 0, 1, 2, -1, -4]));
 console.log(threeSum([0, 1, 1]));
