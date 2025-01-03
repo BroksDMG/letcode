@@ -3,21 +3,23 @@
  * @return {number}
  */
 var maxArea = function (height) {
-  if (height < 2) return height[0];
-  let j = height.length - 1;
-  let maxSum = 0;
-  for (let i = 0; i < height.length; i++) {
-    if (i >= j) return maxSum;
-    let length = j - i;
-    let h = Math.min(height[i], height[j]);
-    if (height[i] > height[j]) {
-      i--;
-      j--;
-    }
-    if (h * length > maxSum) {
-      maxSum = h * length;
-    }
-  }
+  let right = height.length-1;
+        let left=0;
+        let conheight;
+        let maxwater=0;
+        while(left<=right){
+            let flor=right-left
+            if(height[left]>height[right]){
+               conheight=height[right]
+                right--
+            }else{
+                conheight=height[left]
+                left++
+            }
+            maxwater=Math.max(conheight*flor,maxwater);
+            
+        }
+        return maxwater
 };
 
 console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
